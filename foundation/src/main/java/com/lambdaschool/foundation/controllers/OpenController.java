@@ -84,7 +84,7 @@ public class OpenController
         // The location comes from a different controller!
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newUserURI = ServletUriComponentsBuilder.fromUriString(httpServletRequest.getServerName() + ":" + httpServletRequest.getLocalPort() + "/users/user/{userId}")
-            .buildAndExpand(newuser.getUserid())
+            .buildAndExpand(newuser.getUser_id())
             .toUri();
         responseHeaders.setLocation(newUserURI);
 

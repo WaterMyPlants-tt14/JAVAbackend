@@ -3,11 +3,10 @@ package com.lambdaschool.foundation;
 import com.github.javafaker.Faker;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
-import com.lambdaschool.foundation.models.Role;
-import com.lambdaschool.foundation.models.User;
-import com.lambdaschool.foundation.models.UserRoles;
-import com.lambdaschool.foundation.models.Useremail;
+import com.lambdaschool.foundation.models.*;
+import com.lambdaschool.foundation.services.PlantService;
 import com.lambdaschool.foundation.services.RoleService;
+import com.lambdaschool.foundation.services.SpeciesService;
 import com.lambdaschool.foundation.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -44,6 +43,12 @@ public class SeedData
      */
     @Autowired
     UserService userService;
+
+    @Autowired
+    SpeciesService speciesService;
+
+    @Autowired
+    PlantService plantService;
 
     /**
      * Generates test, seed data for our application
@@ -90,7 +95,7 @@ public class SeedData
             .add(new Useremail(u1,
                 "admin@mymail.local"));
 
-        userService.save(u1);
+        u1 = userService.save(u1);
 
         // data, user
         User u2 = new User("cinnamon",
@@ -144,6 +149,29 @@ public class SeedData
             .add(new UserRoles(u5,
                 r2));
         userService.save(u5);
+
+        Species s1 = new Species();
+        s1.setPlant_name("Fern");
+        s1.setPlant_scientific_name("Fernus fernia");
+        s1.setPlant_image("https://plantimage.com/jpg");
+        s1.setWater_schedule("Once Per Week");
+        speciesService.save(s1);
+
+        Species s2 = new Species();
+        s2.setPlant_name("Love Fern");
+        s2.setPlant_scientific_name("Fernius Lovernius");
+        s2.setPlant_image("https://plantimage.com/jpg");
+        s2.setWater_schedule("Once Per Week");
+        speciesService.save(s2);
+
+        Plant p1 = new Plant();
+        p1.setPlant_nickname("My favorite fern");
+        p1.setPlant_location("front door");
+        p1.setWater_day(2);
+        p1.setNotes("Sally gave me this plant");
+        p1.setSpecies(s2);
+        p1.setUser(u1);
+        plantService.save(p1);
 
         if (false)
         {

@@ -26,7 +26,7 @@ public class User
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long userid;
+    private long user_id;
 
     /**
      * The username (String). Cannot be null and must be unique
@@ -52,6 +52,9 @@ public class User
 
     @Column(nullable = false)
     private String phone;
+
+    @OneToMany(mappedBy = "user")
+    private List<Plant> plants = new ArrayList<>();
 
     /**
      * A list of emails for this user
@@ -114,9 +117,9 @@ public class User
      *
      * @return the userid (long) of the user
      */
-    public long getUserid()
+    public long getUser_id()
     {
-        return userid;
+        return user_id;
     }
 
     /**
@@ -124,9 +127,9 @@ public class User
      *
      * @param userid the new userid (long) of the user
      */
-    public void setUserid(long userid)
+    public void setUser_id(long userid)
     {
-        this.userid = userid;
+        this.user_id = userid;
     }
 
     /**
