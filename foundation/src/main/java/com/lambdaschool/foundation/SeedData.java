@@ -72,7 +72,8 @@ public class SeedData
         // admin, data, user
         User u1 = new User("admin",
             "password",
-            "admin@lambdaschool.local");
+            "admin@lambdaschool.local",
+            "1111");
         u1.getRoles()
             .add(new UserRoles(u1,
                 r1));
@@ -94,7 +95,8 @@ public class SeedData
         // data, user
         User u2 = new User("cinnamon",
             "1234567",
-            "cinnamon@lambdaschool.local");
+            "cinnamon@lambdaschool.local",
+            "2222");
         u2.getRoles()
             .add(new UserRoles(u2,
                 r2));
@@ -115,7 +117,8 @@ public class SeedData
         // user
         User u3 = new User("barnbarn",
             "ILuvM4th!",
-            "barnbarn@lambdaschool.local");
+            "barnbarn@lambdaschool.local",
+            "3333");
         u3.getRoles()
             .add(new UserRoles(u3,
                 r2));
@@ -126,7 +129,8 @@ public class SeedData
 
         User u4 = new User("puttat",
             "password",
-            "puttat@school.lambda");
+            "puttat@school.lambda",
+            "4444");
         u4.getRoles()
             .add(new UserRoles(u4,
                 r2));
@@ -134,7 +138,8 @@ public class SeedData
 
         User u5 = new User("misskitty",
             "password",
-            "misskitty@school.lambda");
+            "misskitty@school.lambda",
+            "5555");
         u5.getRoles()
             .add(new UserRoles(u5,
                 r2));
@@ -159,7 +164,7 @@ public class SeedData
                     .username(),
                     "password",
                     nameFaker.internet()
-                        .emailAddress());
+                        .emailAddress(), "1234");
                 fakeUser.getRoles()
                     .add(new UserRoles(fakeUser,
                         r2));

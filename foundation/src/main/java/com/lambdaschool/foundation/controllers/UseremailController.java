@@ -16,6 +16,7 @@ import java.util.List;
 /**
  * The entry point for client to access user, email combinations
  */
+
 @RestController
 @RequestMapping("/useremails")
 public class UseremailController
