@@ -59,8 +59,8 @@ public class Plant extends Auditable{
         return plant_location;
     }
 
-    public void setPlant_location(String plant_location) {
-        this.plant_location = plant_location;
+    public void setPlant_location(String plantLocation) {
+        this.plant_location = plantLocation;
     }
 
     public String getNotes() {
