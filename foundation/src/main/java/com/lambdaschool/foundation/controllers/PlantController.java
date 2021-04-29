@@ -49,4 +49,12 @@ public class PlantController {
         PlantView view = plantService.getPlantView(updatedPlant);
         return new ResponseEntity<>(view, HttpStatus.OK);
     }
+
+    @DeleteMapping(consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Void> deletePlant(Authentication authentication,
+                                            @RequestBody PlantSetter plantSetter) {
+        User client = userService.findByName(authentication.getName());
+        plantService.delete(plantSetter, client);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

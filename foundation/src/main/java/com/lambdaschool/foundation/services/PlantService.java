@@ -15,4 +15,6 @@ public interface PlantService {
     List<PlantView> findAllMyPlants(long id);
 
     PlantView getPlantView(Plant updatedPlant);
+
+    void delete(PlantSetter plantSetter, User user);
 }

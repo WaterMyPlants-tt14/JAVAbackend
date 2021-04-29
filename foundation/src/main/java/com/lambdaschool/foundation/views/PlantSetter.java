@@ -5,6 +5,16 @@ import com.lambdaschool.foundation.models.Plant;
 import com.lambdaschool.foundation.models.Species;
 
 public class PlantSetter {
+    public long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
+    }
+
+    private long user_id;
+
     private long user_plant_id;
 
     private String plant_nickname;

@@ -47,7 +47,9 @@ public class PlantServiceImpl implements PlantService {
     public Plant update(PlantSetter plantSetter, User user) {
         Plant plant = plantRepository.findById(plantSetter.getUser_plant_id())
                 .orElseThrow(() -> new ResourceNotFoundException("plant " + plantSetter.getUser_plant_id() + " not found"));
-        plant.setUser(user);
+        if (plant.getUser().getUser_id() != user.getUser_id()) {
+            throw(new ResourceNotFoundException("plant " + plantSetter.getUser_plant_id() + " not found"));
+        }
         if (plantSetter.getPlant_nickname() != null) {
             plant.setPlant_nickname(plantSetter.getPlant_nickname());
         }
@@ -74,5 +76,15 @@ public class PlantServiceImpl implements PlantService {
     @Override
     public PlantView getPlantView(Plant plant) {
         return plantRepository.getPlantView(plant.getUser_plant_id());
+    }
+
+    @Override
+    public void delete(PlantSetter plantSetter, User user) {
+        Plant plant = plantRepository.findById(plantSetter.getUser_plant_id())
+                .orElseThrow(() -> new ResourceNotFoundException("plant " + plantSetter.getUser_plant_id() + " not found"));
+        if (plant.getUser().getUser_id() != user.getUser_id()) {
+            throw(new ResourceNotFoundException("plant " + plantSetter.getUser_plant_id() + " not found"));
+        }
+        plantRepository.delete(plant);
     }
 }
