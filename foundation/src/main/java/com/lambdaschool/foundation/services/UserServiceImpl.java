@@ -91,18 +91,20 @@ public class UserServiceImpl
     {
         User newUser = new User();
 
-        if (user.getUserid() != 0)
+        if (user.getUser_id() != 0)
         {
-            userrepos.findById(user.getUserid())
-                .orElseThrow(() -> new ResourceNotFoundException("User id " + user.getUserid() + " not found!"));
-            newUser.setUserid(user.getUserid());
+            userrepos.findById(user.getUser_id())
+                .orElseThrow(() -> new ResourceNotFoundException("User id " + user.getUser_id() + " not found!"));
+            newUser.setUser_id(user.getUser_id());
         }
 
         newUser.setUsername(user.getUsername()
             .toLowerCase());
         newUser.setPasswordNoEncrypt(user.getPassword());
-        newUser.setPrimaryemail(user.getPrimaryemail()
+        newUser.setEmail(user.getEmail()
             .toLowerCase());
+        newUser.setPhone(user.getPhone());
+        newUser.setName(user.getName());
 
         newUser.getRoles()
             .clear();
@@ -148,10 +150,14 @@ public class UserServiceImpl
                 currentUser.setPasswordNoEncrypt(user.getPassword());
             }
 
-            if (user.getPrimaryemail() != null)
+            if (user.getEmail() != null)
             {
-                currentUser.setPrimaryemail(user.getPrimaryemail()
+                currentUser.setEmail(user.getEmail()
                     .toLowerCase());
+            }
+
+            if (user.getPhone() != null) {
+                currentUser.setPhone(user.getPhone());
             }
 
             if (user.getRoles()
@@ -197,5 +203,23 @@ public class UserServiceImpl
     public void deleteAll()
     {
         userrepos.deleteAll();
+    }
+
+    @Transactional
+    @Override
+    public User updateUser(User user, User userUpdate) {
+        if (userUpdate.getName() != null) {
+            user.setName(userUpdate.getName());
+        }
+        if (userUpdate.getEmail() != null) {
+            user.setEmail(userUpdate.getEmail());
+        }
+        if (userUpdate.getPhone() != null) {
+            user.setPhone(userUpdate.getPhone());
+        }
+        if (userUpdate.getPassword() != null) {
+            user.setPasswordNoEncrypt(userUpdate.getPassword());
+        }
+        return user;
     }
 }

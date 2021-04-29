@@ -69,7 +69,8 @@ public class OpenController
 
         newuser.setUsername(newminuser.getUsername());
         newuser.setPassword(newminuser.getPassword());
-        newuser.setPrimaryemail(newminuser.getPrimaryemail());
+        newuser.setEmail(newminuser.getPrimaryemail());
+        newuser.setPhone(newminuser.getPhone());
 
         // add the default role of user
         Set<UserRoles> newRoles = new HashSet<>();
@@ -83,7 +84,7 @@ public class OpenController
         // The location comes from a different controller!
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newUserURI = ServletUriComponentsBuilder.fromUriString(httpServletRequest.getServerName() + ":" + httpServletRequest.getLocalPort() + "/users/user/{userId}")
-            .buildAndExpand(newuser.getUserid())
+            .buildAndExpand(newuser.getUser_id())
             .toUri();
         responseHeaders.setLocation(newUserURI);
 
