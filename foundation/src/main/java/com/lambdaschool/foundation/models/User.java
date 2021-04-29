@@ -8,10 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * The entity allowing interaction with the users table
@@ -52,6 +49,9 @@ public class User
 
     @Column(nullable = false)
     private String phone;
+
+    @Column(nullable = false)
+    private String name;
 
     @OneToMany(mappedBy = "user")
     private List<Plant> plants = new ArrayList<>();
@@ -96,12 +96,21 @@ public class User
     public User(
             String username,
             String password,
-            String primaryemail, String phone)
+            String primaryemail, String phone, String name)
     {
         this.phone = phone;
         setUsername(username);
         setPassword(password);
-        this.email = primaryemail;
+        setEmail(primaryemail);
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {
@@ -149,7 +158,6 @@ public class User
      */
     public void setUsername(String username)
     {
-        this.username = username.toLowerCase();
     }
 
     /**
@@ -169,6 +177,7 @@ public class User
      */
     public void setEmail(String primaryemail)
     {
+        this.username = primaryemail.toLowerCase();
         this.email = primaryemail.toLowerCase();
     }
 

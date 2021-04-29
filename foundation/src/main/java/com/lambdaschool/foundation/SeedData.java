@@ -78,7 +78,8 @@ public class SeedData
         User u1 = new User("admin",
             "password",
             "admin@lambdaschool.local",
-            "1111");
+            "1111",
+            "Taylor");
         u1.getRoles()
             .add(new UserRoles(u1,
                 r1));
@@ -101,7 +102,8 @@ public class SeedData
         User u2 = new User("cinnamon",
             "1234567",
             "cinnamon@lambdaschool.local",
-            "2222");
+            "2222",
+            "Cinnamon");
         u2.getRoles()
             .add(new UserRoles(u2,
                 r2));
@@ -118,37 +120,6 @@ public class SeedData
             .add(new Useremail(u2,
                 "bunny@email.local"));
         userService.save(u2);
-
-        // user
-        User u3 = new User("barnbarn",
-            "ILuvM4th!",
-            "barnbarn@lambdaschool.local",
-            "3333");
-        u3.getRoles()
-            .add(new UserRoles(u3,
-                r2));
-        u3.getUseremails()
-            .add(new Useremail(u3,
-                "barnbarn@email.local"));
-        userService.save(u3);
-
-        User u4 = new User("puttat",
-            "password",
-            "puttat@school.lambda",
-            "4444");
-        u4.getRoles()
-            .add(new UserRoles(u4,
-                r2));
-        userService.save(u4);
-
-        User u5 = new User("misskitty",
-            "password",
-            "misskitty@school.lambda",
-            "5555");
-        u5.getRoles()
-            .add(new UserRoles(u5,
-                r2));
-        userService.save(u5);
 
         Species s1 = new Species();
         s1.setPlant_name("Fern");
@@ -173,34 +144,5 @@ public class SeedData
         p1.setUser(u1);
         plantService.save(p1);
 
-        if (false)
-        {
-            // using JavaFaker create a bunch of regular users
-            // https://www.baeldung.com/java-faker
-            // https://www.baeldung.com/regular-expressions-java
-
-            FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-US"),
-                new RandomService());
-            Faker nameFaker = new Faker(new Locale("en-US"));
-
-            for (int i = 0; i < 25; i++)
-            {
-                new User();
-                User fakeUser;
-
-                fakeUser = new User(nameFaker.name()
-                    .username(),
-                    "password",
-                    nameFaker.internet()
-                        .emailAddress(), "1234");
-                fakeUser.getRoles()
-                    .add(new UserRoles(fakeUser,
-                        r2));
-                fakeUser.getUseremails()
-                    .add(new Useremail(fakeUser,
-                        fakeValuesService.bothify("????##@gmail.com")));
-                userService.save(fakeUser);
-            }
-        }
     }
 }

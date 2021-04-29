@@ -6,7 +6,6 @@ import com.lambdaschool.foundation.services.PlantService;
 import com.lambdaschool.foundation.services.UserService;
 import com.lambdaschool.foundation.views.PlantSetter;
 import com.lambdaschool.foundation.views.PlantView;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -104,6 +104,7 @@ public class UserServiceImpl
         newUser.setEmail(user.getEmail()
             .toLowerCase());
         newUser.setPhone(user.getPhone());
+        newUser.setName(user.getName());
 
         newUser.getRoles()
             .clear();
@@ -202,5 +203,23 @@ public class UserServiceImpl
     public void deleteAll()
     {
         userrepos.deleteAll();
+    }
+
+    @Transactional
+    @Override
+    public User updateUser(User user, User userUpdate) {
+        if (userUpdate.getName() != null) {
+            user.setName(userUpdate.getName());
+        }
+        if (userUpdate.getEmail() != null) {
+            user.setEmail(userUpdate.getEmail());
+        }
+        if (userUpdate.getPhone() != null) {
+            user.setPhone(userUpdate.getPhone());
+        }
+        if (userUpdate.getPassword() != null) {
+            user.setPasswordNoEncrypt(userUpdate.getPassword());
+        }
+        return user;
     }
 }
