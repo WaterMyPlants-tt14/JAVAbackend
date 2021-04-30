@@ -11,7 +11,7 @@
     <groupId>com.lambdaschool</groupId>
     <artifactId>foundation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>usermodel</name>
+    <name>water--my--plants</name>
     <description>Scaffolding App for Lambda School Build Week</description>
 
     <properties>
@@ -125,7 +125,8 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>3.0.2</version>
                 <configuration>
-                    <appName>${project.build.finalName}</appName>
+<!--                    <appName>${project.build.finalName}</appName>-->
+                    <appName>water--my--plants</appName>
                     <includeTarget>false</includeTarget>
                     <includes>
                         <include>${project.build.directory}/${project.build.finalName}.jar</include>

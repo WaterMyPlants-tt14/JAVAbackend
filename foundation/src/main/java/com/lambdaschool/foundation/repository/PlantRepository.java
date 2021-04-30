@@ -18,7 +18,7 @@ public interface PlantRepository extends CrudRepository<Plant, Long> {
                     " s.plant_name, " +
                     " s.plant_scientific_name," +
                     " s.water_schedule, " +
-                    " s.plant_image, " +
+                    " s.plant_image " +
             " FROM userplants p, species s " +
             " WHERE p.user_id=?1 " +
             " AND (p.species_id = s.species_id) ",
@@ -35,7 +35,7 @@ public interface PlantRepository extends CrudRepository<Plant, Long> {
                     " s.plant_name, " +
                     " s.plant_scientific_name," +
                     " s.water_schedule, " +
-                    " s.plant_image, " +
+                    " s.plant_image " +
                     " FROM userplants p, species s " +
                     " WHERE p.user_plant_id=?1 " +
                     " AND (p.species_id = s.species_id) ",
