@@ -11,7 +11,7 @@ public class UserMinimum
     /**
      * The username (String)
      */
-    private String username;
+    private String name;
 
     /**
      * The user's password (String)
@@ -22,7 +22,7 @@ public class UserMinimum
      * The user's primary email address (String)
      */
     @Email
-    private String primaryemail;
+    private String email;
 
     private String phone;
 
@@ -31,19 +31,19 @@ public class UserMinimum
      *
      * @return the username (String) associated with this user
      */
-    public String getUsername()
+    public String getName()
     {
-        return username;
+        return name;
     }
 
     /**
      * Setter for the username
      *
-     * @param username the new username (String) associated with this user
+     * @param name the new username (String) associated with this user
      */
-    public void setUsername(String username)
+    public void setName(String name)
     {
-        this.username = username;
+        this.name = name;
     }
 
     /**
@@ -72,19 +72,19 @@ public class UserMinimum
      *
      * @return the email address (String) for this user
      */
-    public String getPrimaryemail()
+    public String getEmail()
     {
-        return primaryemail;
+        return email;
     }
 
     /**
      * Setter for email for this user
      *
-     * @param primaryemail the new email address (String) for this user.
+     * @param email the new email address (String) for this user.
      */
-    public void setPrimaryemail(String primaryemail)
+    public void setEmail(String email)
     {
-        this.primaryemail = primaryemail;
+        this.email = email;
     }
 
     public String getPhone() {

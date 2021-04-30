@@ -67,9 +67,9 @@ public class OpenController
         // Create the user
         User newuser = new User();
 
-        newuser.setUsername(newminuser.getUsername());
+        newuser.setName(newminuser.getName());
         newuser.setPassword(newminuser.getPassword());
-        newuser.setEmail(newminuser.getPrimaryemail());
+        newuser.setEmail(newminuser.getEmail());
         newuser.setPhone(newminuser.getPhone());
 
         // add the default role of user
@@ -108,7 +108,7 @@ public class OpenController
         map.add("scope",
             "read write trust");
         map.add("username",
-            newminuser.getUsername());
+            newminuser.getEmail());
         map.add("password",
             newminuser.getPassword());
 
